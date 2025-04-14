@@ -2,6 +2,7 @@
 
 XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
 LIBRECHAT_PATH="$XDG_DATA_HOME/LibreChat"
+VERSION="v0.7.7"
 
 mkdir -p "$LIBRECHAT_PATH"
 mkdir -p "$XDG_DATA_HOME/applications"
@@ -12,9 +13,9 @@ if [ "$(ls -A $LIBRECHAT_PATH)" ]
 then
 	cd $LIBRECHAT_PATH
 	# Assume the appropriate git repo is saved at $LIBRECHAT_PATH
-	git checkout v0.7.7
+	git checkout $VERSION
 else
-	git clone https://github.com/danny-avila/LibreChat.git "$LIBRECHAT_PATH"
+	git clone https://github.com/danny-avila/LibreChat.git -b $VERSION "$LIBRECHAT_PATH"
 	# Use the default config
 	cp $LIBRECHAT_PATH/.env.example $LIBRECHAT_PATH/.env
 fi
@@ -37,7 +38,7 @@ cat > "$XDG_DATA_HOME/applications/librechat_stop.desktop" << EOF
 Name=Stop LibreChat
 Comment=Close local web server running LibreChat
 Path=$LIBRECHAT_PATH
-Exec=bash -c "cd $LIBRECHAT_PATH && docker compose down
+Exec=bash -c "cd $LIBRECHAT_PATH && docker compose down"
 Terminal=false
 Type=Application
 Categories=Network;Chat;

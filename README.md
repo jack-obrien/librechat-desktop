@@ -16,7 +16,10 @@ Clone this repository then `cd` into it. Run the following in a bash shell:
 ```
 
 ## Usage
-This 
+This script provides two desktop entries:
+
+* LibreChat: spins up the docker containers running the backend, and launches a web browser page pointed at the LibreChat interfce.
+* Stop LibreChat: Shuts down the LibreChat server and all associated Docker containers.
 
 ## Data Migration
 To migrate data from an existing LibreChat installation:
